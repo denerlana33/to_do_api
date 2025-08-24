@@ -1,16 +1,15 @@
 from pydantic import BaseModel
-from typing import Optional
 
-class ToDoItemBase(BaseModel):
-    title: str
-    description: Optional[str] = None
-    done: bool = False
+class TarefaBase(BaseModel):
+    titulo: str
+    descricao: str | None = None
+    concluida: bool = False
 
-class ToDoItemCreate(ToDoItemBase):
+class TarefaCreate(TarefaBase):
     pass
 
-class ToDoItem(ToDoItemBase):
+class Tarefa(TarefaBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

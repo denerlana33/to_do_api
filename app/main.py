@@ -1,12 +1,8 @@
-from fastapi import FastAPI
-from app.database import engine
-from app import models
-from app.schemas import ToDoItem
+# app/main.py
 
-models.Base.metadata.create_all(bind=engine)
+from fastapi import FastAPI
+from app.routes import router
 
 app = FastAPI()
 
-@app.get("/")
-def root():
-    return {"message": "API funcionando!"}
+app.include_router(router)

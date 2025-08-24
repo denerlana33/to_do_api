@@ -1,9 +1,12 @@
-from sqlalchemy import Column, Integer, String
-from app.database import Base  # Importa o Base do database.py
+# app/models.py
+from sqlalchemy import Column, Integer, String, Boolean
+from app.database import Base
 
-class Task(Base):
-    __tablename__ = "tasks"
+
+class Tarefa(Base):
+    __tablename__ = "tarefas"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    description = Column(String, index=True)
+    titulo = Column(String, index=True)
+    descricao = Column(String, nullable=True)
+    concluida = Column(Boolean, default=False)  # <-- Fechar o parêntese aqui
